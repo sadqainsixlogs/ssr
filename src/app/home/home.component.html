@@ -1,0 +1,19 @@
+<div class="row">
+  <h1>Angular SSR</h1>
+  <h2>{{title}}</h2>
+  <div class="d-grid d-md-block">
+    <button class="btn btn-outline-dark btn-sm" type="button" routerLink="/home">Home</button>
+    <button class="btn btn-outline-dark btn-sm" type="button" routerLink="/user">User</button>
+  </div>
+  <div class="col-lg-3 col-md-4 col-sm-2" *ngFor="let item of sampleData; let i = index">
+    <div class="card shadow text-bg-{{item.type}} mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{item.header}} {{i + 1}}</div>
+      <div class="card-body">
+        <h5 class="card-title">{{item.title}} {{i + 1}}</h5>
+        <p class="card-text">
+          {{item.description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

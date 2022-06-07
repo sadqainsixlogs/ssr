@@ -1,0 +1,20 @@
+<div class="row">
+  <h1>Angular SSR</h1>
+  <h2>{{title}}</h2>
+  <div class="d-grid d-md-block">
+    <button class="btn btn-outline-dark btn-sm" type="button" routerLink="/home">Home</button>
+    <button class="btn btn-outline-dark btn-sm" type="button" routerLink="/user">User</button>
+  </div>
+
+  <ng-container *ngTemplateOutlet="recursiveListTemplate; context: {list:list}"></ng-container>
+  <ng-template #recursiveListTemplate let-list="list">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let item of list">
+        {{item.title}}
+        <ul class="list-group" *ngIf="item.children.length > 0">
+          <ng-container *ngTemplateOutlet="recursiveListTemplate; context: {list:item.children}"></ng-container>
+        </ul>
+      </li>
+    </ul>
+  </ng-template>
+</div>
